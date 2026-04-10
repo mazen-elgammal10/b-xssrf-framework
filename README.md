@@ -6,6 +6,14 @@
 - **SSRF (Server-Side Request Forgery)**
 - **Information Leakage**
 
+## 📝 Screenshots
+
+Here is a look at the B-XSSRF interface and its automated workflow:
+
+### 🔹 Main Menu & Automation Options
+![Main Menu](screenshots/main_menu.png)
+
+> Note: More screenshots of the scanning and reporting phases will be added soon.
 ---
 
 ## 🚀 Key Features
