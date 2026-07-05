@@ -1,139 +1,95 @@
-# B-XSSRF v3.0 🛡️
+# B-XSSRF v7 🛡️
 
 ## 📌 Overview
-**B-XSSRF** is an **End-to-End Automated Pentesting Framework** designed for analyzing Android applications and detecting critical vulnerabilities such as:
-
-- **SSRF (Server-Side Request Forgery)**
-- **Information Leakage**
-
 ## 📝 Screenshots
 
-Here is a look at the B-XSSRF interface and its automated workflow:
+Here is a look at the **B-XSSRF v7** interactive console and its automated workflow:
 
-### 🔹 Main Menu & Automation Options
-![Main Menu](screenshots/main_menu.png)
-
-> Note: More screenshots of the scanning and reporting phases will be added soon.
----
-
-## 🚀 Key Features
-
-### 🔹 APK Static Analysis
-- Performs APK **Decompilation**
-- Extracts **Hardcoded Secrets**, including:
-  - API Keys
-  - Firebase URLs
-
-### 🔹 Secrets Scraping Engine
-- Uses **Regex-based scanning** to identify sensitive data within the source code
-
-### 🔹 Payload Generation
-- Generates **Obfuscated Payloads** (SVG/XML)
-- Supports **WAF Bypass Techniques**
-
-### 🔹 Network Reconnaissance
-- Integrates with **Nmap** for:
-  - Port Scanning
-  - Service Detection
-
-### 🔹 SSRF Exploitation Engine
-- Exploits SSRF vulnerabilities to access **Internal Services**
-
-### 🔹 Full Automation Chain
-Executes the entire attack lifecycle automatically:
-
-
-" Analysis → Payload → Scan → Exploitation → Reporting "
-
-
-### 🔹 Professional Security Reporting
-- Generates a **Detailed Vulnerability Report** including:
-  - Key Findings
-  - Risk Level
-  - Security Recommendations
+![Main Menu](/home/kali/Desktop/b-xssrf/screenshots/Screenshot 2026-07-06 015630.png)
+**B-XSSRF v7** is an advanced **End-to-End Automated Penetration Testing & Security Auditing Framework** engineered for mobile applications (Android) and backend infrastructure. The framework completely automates the security assessment lifecycle—from static analysis and deep decompilation to custom payload generation, live exploitation verification, and highly structured security reporting.
 
 ---
 
-## 🤖 AI Role in B-XSSRF
+## 📝 Terminal Interface
 
-B-XSSRF integrates intelligent techniques to enhance the penetration testing process.
+The modern interactive console layout features an intuitive menu structure:
 
-### 🔹 Intelligent Static Analysis
-- Analyzes decompiled code automatically
-- Detects hidden or obfuscated sensitive data
+```text
+ ____        __  ______ ____  ____  _____ 
+| __ )       \ \/ / ___/ ___||  _ \|  ___|
+|  _ \   ___  \  /\___ \___ \| |_) | |_   
+| |_) | |___| /  \ ___) |__) |  _ <|  _|  
+|____/       /_/\_\____/____/|_| \_\_|    
 
-### 🔹 Smart Secrets Detection
-- Goes beyond basic regex
-- Detects:
-  - API keys
-  - Tokens
-  - Hidden endpoints
+ B-XSSRF v7
+ User: Mazen
+```
+ 🔹 Core Modules
+[1] MOBILE AUDIT → Fast static manifest parsing and initial risk checking.
 
-### 🔹 Context-Aware Payload Generation
-- Generates payloads based on target behavior
-- Supports WAF-aware payload crafting
+[2] INFRASTRUCTURE → Internal network mapping and service discovery.
 
-### 🔹 Automated Decision Making
-- Chooses optimal attack paths during execution
-- Focuses on high-risk targets
+[3] ATTACK CHAIN → Context-aware logical sequencing of coupled vulnerabilities.
 
-### 🔹 Enhanced Reporting
-- Provides meaningful vulnerability insights
-- Highlights risk severity and impact
+[4] AUTO EXPLOIT → The complete end-to-end automation engine.
 
----
+[0] EXIT → Gracefully terminate the framework environment.
 
-## 🛠️ Architecture
+🚀 The Full Automation Chain (Option 4)
+When executing the Full Automation Chain, B-XSSRF runs a meticulous 5-phase operation against the target APK:
 
-- `unpacker.py` → APK Decompilation (Apktool)
-- `scraper.py` → Extract sensitive data (API Keys / URLs)
-- `payload_factory.py` → Generate payloads
-- `requester.py` → Port scanning + SSRF requests
-- `reporter.py` → Generate final report
+🔄 Execution Lifecycle Breakdown
+[1/5] Static Analysis: Instantly maps high-level parameters (Debuggable, AllowBackup) and extracts rapid manifest insights into a structured matrix.
 
----
+[2/5] Deep Secrets Scan: Decompiles the codebase down to smali/resources to uncover hidden endpoints, custom strings, hardcoded passwords, and sensitive user data.
 
-## ⚙️ How It Works (Attack Flow)
+[3/5] Payload Generation: Dynamically crafts context-aware exploitation payloads (e.g., SVG/XML vectors, path traversal arrays, or SSRF fuzzing schemes) based on the discovered components.
 
-1. Input target APK file  
-2. Perform **Decompilation**  
-3. Extract **Hardcoded Secrets**  
-4. Generate **Bypass Payloads**  
-5. Execute **Port Scanning** (e.g., 127.0.0.1)  
-6. Identify **Open Ports** (e.g., 5000)  
-7. Perform **SSRF Exploitation**:
+[4/5] Live Exploitation & Verification: Checks for active device connections via emulation environments to perform runtime validation (like active JDWP debug hooks or automated backup extractions).
 
+[5/5] Final Report Generation: Aggregates findings into a high-visibility execution table containing phase breakdowns, specific evidence logs, and defensive remediation recommendations.
 
-http://127.0.0.1:5000/
+📊 Comprehensive Security Reporting
+Upon completion, the framework presents a Detailed Vulnerability Report directly in the console terminal:
 
+Plaintext
+┌────────────────────────┬────────────────────────────────────────────────────────────────────────┐
+│ Phase                  │ Key Findings & Data                                                    │
+├────────────────────────┼────────────────────────────────────────────────────────────────────────┤
+│ 1. Manifest Risks      │ Debuggable = true (CRITICAL)                                           │
+│                        │ AllowBackup = true (HIGH)                                              │
+├────────────────────────┼────────────────────────────────────────────────────────────────────────┤
+│ 2. Secrets (Manifest)  │ Rapid scan logs (e.g., Target infrastructure assets)                   │
+├────────────────────────┼────────────────────────────────────────────────────────────────────────┤
+│ 3. Deep Scan           │ Decompiled resource highlights (Endpoints, Passwords, Usernames)       │
+├────────────────────────┼────────────────────────────────────────────────────────────────────────┤
+│ 4. Generated Payloads  │ Dynamic exploitation vectors mapped to extracted schemas               │
+├────────────────────────┼────────────────────────────────────────────────────────────────────────┤
+│ 5. Live Exploitation   │ JDWP code execution paths / ADB backup vulnerability verification      │
+├────────────────────────┼────────────────────────────────────────────────────────────────────────┤
+│ 6. Network/Infra Scan  │ Targeted service auditing context                                      │
+├────────────────────────┼────────────────────────────────────────────────────────────────────────┤
+│ 7. Recommendation      │ Actionable remediation rules (e.g., disabling debug flags in prod)     │
+└────────────────────────┴────────────────────────────────────────────────────────────────────────┘
+💡 The framework prompts the engineer instantly with interactive options to save the complete report locally for documentation purposes.
 
-8. Access **Internal Services**  
-9. Generate a **Detailed Security Report**
+📖 Quick Usage
+Launch the master orchestration script:
 
----
-
-## 📖 Usage
-
-Run the tool from the root directory:
-
-```bash
+Bash
 python3 main.py
-Steps:
-Select:
-4
+Choose 4 to enter the automated assessment chain.
 
-(Full Automation Chain)
+Input the destination path to your test application:
 
-Enter APK path:
-/home/kali/Desktop/DivaApplication.apk
-
+Plaintext
+[+] Enter APK Path: /home/kali/Desktop/DivaApplication.apk
 ⚠️ Disclaimer
+This framework is built strictly for authorized penetration testing, industrial security auditing, and academic research. Operating this utility against unauthorized environments without proper written approval is explicitly prohibited. The author holds no liability for downstream infrastructure damages or alignment issues caused by inappropriate usage.
 
-This tool is intended for educational and ethical hacking purposes only.
-Use only on systems you have explicit permission to test.
-The developer is not responsible for misuse.
+👨‍💻 Author
+Mazen Mahmoud
 
-👨‍💻 Developer
+Cybersecurity Researcher & Core Developer
 
-Mazen Elgammal
-Cybersecurity Researcher & Developer
+GitHub Profile | LinkedIn
