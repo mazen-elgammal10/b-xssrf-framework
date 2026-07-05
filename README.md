@@ -82,4 +82,4 @@ Plaintext
 This framework is built strictly for authorized penetration testing, industrial security auditing, and academic research. Operating this utility against unauthorized environments without proper written approval is explicitly prohibited. The author holds no liability for downstream infrastructure damages or alignment issues caused by inappropriate usage.
 
 👨‍💻 Author
-Mazen El-Gammal Cybersecurity Researcher & Core Developer [GitHub Profile](https://github.com/mazen-elgammal10) | [LinkedIn]([https://linkedin.com](https://www.linkedin.com/in/mazen-el-gammal-1934a1291/))
+Mazen El-Gammal Cybersecurity Researcher & Core Developer [GitHub Profile](https://github.com/mazen-elgammal10) | [LinkedIn]([https://linkedin.com](https://www.linkedin.com/in/mazen-el-gammal-1934a1291/)
