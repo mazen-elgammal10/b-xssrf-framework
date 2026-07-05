@@ -1,12 +1,15 @@
 # B-XSSRF v7 🛡️
 
 ## 📌 Overview
+**B-XSSRF v7** is an advanced **End-to-End Automated Penetration Testing & Security Auditing Framework** engineered for mobile applications (Android) and backend infrastructure. The framework completely automates the security assessment lifecycle—from static analysis and deep decompilation to custom payload generation, live exploitation verification, and highly structured security reporting.
+
+---
+
 ## 📝 Screenshots
 
 Here is a look at the **B-XSSRF v7** interactive console and its automated workflow:
 
-![Main Menu](/home/kali/Desktop/b-xssrf/screenshots/Screenshot 2026-07-06 015630.png)
-**B-XSSRF v7** is an advanced **End-to-End Automated Penetration Testing & Security Auditing Framework** engineered for mobile applications (Android) and backend infrastructure. The framework completely automates the security assessment lifecycle—from static analysis and deep decompilation to custom payload generation, live exploitation verification, and highly structured security reporting.
+![Main Menu](screenshots/main_menu.png)
 
 ---
 
@@ -22,9 +25,9 @@ The modern interactive console layout features an intuitive menu structure:
 |____/       /_/\_\____/____/|_| \_\_|    
 
  B-XSSRF v7
- User: Mazen
+ User: Mazen El-Gammal
 ```
- 🔹 Core Modules
+🔹 Core Modules
 [1] MOBILE AUDIT → Fast static manifest parsing and initial risk checking.
 
 [2] INFRASTRUCTURE → Internal network mapping and service discovery.
@@ -88,8 +91,4 @@ Plaintext
 This framework is built strictly for authorized penetration testing, industrial security auditing, and academic research. Operating this utility against unauthorized environments without proper written approval is explicitly prohibited. The author holds no liability for downstream infrastructure damages or alignment issues caused by inappropriate usage.
 
 👨‍💻 Author
-Mazen Mahmoud
-
-Cybersecurity Researcher & Core Developer
-
-GitHub Profile | LinkedIn
+Mazen Mahmoud Cybersecurity Researcher & Core Developer GitHub Profile | LinkedIn
