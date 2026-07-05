@@ -52,29 +52,20 @@ When executing the Full Automation Chain, B-XSSRF runs a meticulous 5-phase oper
 
 [5/5] Final Report Generation: Aggregates findings into a high-visibility execution table containing phase breakdowns, specific evidence logs, and defensive remediation recommendations.
 
-📊 Comprehensive Security Reporting
+## 📊 Comprehensive Security Reporting
 Upon completion, the framework presents a Detailed Vulnerability Report directly in the console terminal:
 
-Plaintext
-┌────────────────────────┬────────────────────────────────────────────────────────────────────────┐
-│ Phase                  │ Key Findings & Data                                                    │
-├────────────────────────┼────────────────────────────────────────────────────────────────────────┤
-│ 1. Manifest Risks      │ Debuggable = true (CRITICAL)                                           │
-│                        │ AllowBackup = true (HIGH)                                              │
-├────────────────────────┼────────────────────────────────────────────────────────────────────────┤
-│ 2. Secrets (Manifest)  │ Rapid scan logs (e.g., Target infrastructure assets)                   │
-├────────────────────────┼────────────────────────────────────────────────────────────────────────┤
-│ 3. Deep Scan           │ Decompiled resource highlights (Endpoints, Passwords, Usernames)       │
-├────────────────────────┼────────────────────────────────────────────────────────────────────────┤
-│ 4. Generated Payloads  │ Dynamic exploitation vectors mapped to extracted schemas               │
-├────────────────────────┼────────────────────────────────────────────────────────────────────────┤
-│ 5. Live Exploitation   │ JDWP code execution paths / ADB backup vulnerability verification      │
-├────────────────────────┼────────────────────────────────────────────────────────────────────────┤
-│ 6. Network/Infra Scan  │ Targeted service auditing context                                      │
-├────────────────────────┼────────────────────────────────────────────────────────────────────────┤
-│ 7. Recommendation      │ Actionable remediation rules (e.g., disabling debug flags in prod)     │
-└────────────────────────┴────────────────────────────────────────────────────────────────────────┘
-💡 The framework prompts the engineer instantly with interactive options to save the complete report locally for documentation purposes.
+| Phase | Key Findings & Data |
+| :--- | :--- |
+| **1. Manifest Risks** | Debuggable = true (CRITICAL) <br> AllowBackup = true (HIGH) |
+| **2. Secrets (Manifest)** | Rapid scan logs (e.g., Target infrastructure assets) |
+| **3. Deep Scan** | Decompiled resource highlights (Endpoints, Passwords, Usernames) |
+| **4. Generated Payloads** | Dynamic exploitation vectors mapped to extracted schemas |
+| **5. Live Exploitation** | JDWP code execution paths / ADB backup vulnerability verification |
+| **6. Network/Infra Scan** | Targeted service auditing context |
+| **7. Recommendation** | Actionable remediation rules (e.g., disabling debug flags in prod) |
+
+> 💡 *The framework prompts the engineer instantly with interactive options to save the complete report locally for documentation purposes.*
 
 📖 Quick Usage
 Launch the master orchestration script:
