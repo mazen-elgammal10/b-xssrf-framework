@@ -1,0 +1,14 @@
+README.md
+pyproject.toml
+b_xssrf.egg-info/PKG-INFO
+b_xssrf.egg-info/SOURCES.txt
+b_xssrf.egg-info/dependency_links.txt
+b_xssrf.egg-info/entry_points.txt
+b_xssrf.egg-info/requires.txt
+b_xssrf.egg-info/top_level.txt
+tests/__init__.py
+tests/test_attack_orchestrator.py
+tests/test_config_loader.py
+tests/test_payload_factory.py
+tests/test_result_analyzer.py
+tests/test_scraper.py

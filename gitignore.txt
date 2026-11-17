@@ -1,0 +1,72 @@
+# Rename to .gitignore after copying
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+*.egg
+
+# Configuration
+config.local.yaml
+*.local.yaml
+
+# Logs
+logs/
+*.log
+
+# Output directory
+output/
+*.apk_extracted/
+*_extracted/
+
+# Reports
+*.sarif
+*.json
+report_*.txt
+final_report.txt
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Testing
+.coverage
+.coverage.*
+htmlcov/
+pytest-cache/
+.tox/
+.mypy_cache/
+.ruff_cache/
+
+# Frida
+*.js.map
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Keys and secrets
+*.key
+*.pem
+*.p12
+*.pfx
+keystore.jks

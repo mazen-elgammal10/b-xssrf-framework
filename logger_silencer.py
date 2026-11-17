@@ -1,35 +1,38 @@
+"""
+Legacy logger silencer - kept for backward compatibility.
+Use logging_setup.configure_logging() for new code.
+"""
+
 import logging
 import sys
-import os
+
+from logging_setup import silence_androguard_logs
 
 
-def silence_all():
-    # 🔥 منع أي logging (stdlib)
+def silence_all() -> None:
+    """
+    Legacy function to silence all logging.
+    Deprecated: Use logging_setup.configure_logging() instead.
+    """
+    # Prevent any logging (stdlib)
     logging.disable(logging.CRITICAL)
 
-    # 🔥 امسح handlers القديمة
+    # Clear handlers
     for handler in logging.root.handlers[:]:
         logging.root.removeHandler(handler)
 
-    # 🔥 اقفل androguard بالكامل (الجزء اللي بيستخدم stdlib logging)
-    for name in list(logging.root.manager.loggerDict.keys()):
-        if name.startswith("androguard"):
-            logger = logging.getLogger(name)
-            logger.handlers = []
-            logger.propagate = False
-            logger.setLevel(logging.CRITICAL)
+    # Silence androguard loggers
+    silence_androguard_logs()
 
-    # 🔥 androguard بيستخدم loguru كمان (خصوصًا في ARSC/resource dimension parsing)
-    # وده نظام منفصل تمامًا عن logging.disable() فوق، فلازم نقفله لوحده
+    # Silence loguru if present
     try:
         from loguru import logger as loguru_logger
         loguru_logger.remove()
     except ImportError:
         pass
     except ValueError:
-        # لو الـ sinks اتشالت قبل كده، remove() من غير args ممكن ترمي ValueError
         pass
 
-    # 🔥 اقفل stdout مؤقتاً (للـ tools المزعجة)
+    # Flush stdout/stderr
     sys.stdout.flush()
     sys.stderr.flush()

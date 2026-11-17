@@ -1,6 +1,5 @@
+
 import nmap
-import os
-import sys
 from rich.console import Console
 from rich.table import Table
 
@@ -17,11 +16,11 @@ def start():
     # مرحلة الفحص باستخدام Nmap
     nm = nmap.PortScanner()
     console.print(f"[bold yellow][*] Scanning {target_ip} for open ports...[/bold yellow]")
-    
+
     try:
         # فحص سريع لأشهر البورتات
-        nm.scan(target_ip, arguments='-F') 
-        
+        nm.scan(target_ip, arguments='-F')
+
         if target_ip not in nm.all_hosts():
             console.print("[bold red][!] Target is down or not reachable.[/bold red]")
             return
@@ -50,7 +49,7 @@ def start():
 
         # اختيار البورت
         selected_port = input("\nSelect a port to attack: ")
-        
+
         path = input("Enter API Path (press Enter for /): ")
         if not path:
             path = "/"
@@ -58,7 +57,7 @@ def start():
             path = "/" + path
 
         target_url = f"http://{target_ip}:{selected_port}{path}"
-        
+
         console.print(f"\n[bold blue][*] Target set to: {target_url}[/bold blue]")
         # هنا تكملة الهجوم الخاص بـ SSRF
         console.print("[bold green][+] Exploitation request sent.[/bold green]")

