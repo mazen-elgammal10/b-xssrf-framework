@@ -32,31 +32,12 @@
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⡿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⣿⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⣿⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ```
+
+![B-XSSRF v7 Main Menu](Screenshot%202026-11-17%20154950.png)
 
 **B-XSSRF v7** is an advanced **End-to-End Automated Penetration Testing & Security Auditing Framework** engineered for mobile applications (Android) and backend infrastructure. The framework completely automates the security assessment lifecycle—from static analysis and deep decompilation to custom payload generation, live exploitation verification, and highly structured security reporting.
-
----
-
-## 🎮 Interactive Preview
-
-```
-┌─[ MODULES ]─
-
-  [1] MOBILE AUDIT       → Static manifest analysis + secret extraction
-  [2] INFRASTRUCTURE     → Network recon, port scanning, vuln assessment
-  [3] ATTACK CHAIN       → Build & execute exploit chains from findings
-  [4] AUTO EXPLOIT       → Full automation: static → dynamic → exploit → report
-  [5] DECOMPILE APK      → Decompile APK with apktool for manual analysis
-  [6] GENERATE PAYLOADS  → Create custom exploitation payloads for endpoints
-  [0] EXIT               → Terminate framework
-
-└─[ SELECT OPTION ]─
-
-┌─[b-xssrf]
-└──► Enter APK Path:
-```
 
 ---
 
@@ -93,16 +74,6 @@
 - **Dynamic Recommendations**: Context-aware remediation based on actual findings
 - **CI/CD Integration**: SARIF upload to GitHub Security tab, GitLab, Azure DevOps
 - **Evidence Management**: Structured findings with severity, payload, evidence, timestamps
-
----
-
-## 📸 Screenshots
-
-### Main Menu
-![B-XSSRF v7 Main Menu](Screenshot%202026-11-17%20154950.png)
-
-### Terminal Interface
-![Terminal Interface](Screenshot%202026-11-17%20154950.png)
 
 ---
 
@@ -160,23 +131,23 @@ b-xssrf
 
 ### Interactive Menu
 
+The framework features a modern terminal interface with a hacker aesthetic:
+
 ```
- ____        __  ______ ____  ____  _____
-| __ )       \ \/ / ___/ ___||  _ \|  ___|
-|  _ \   ___  \  /\___ \___ \| |_) | |_
-| |_) | |___| /  \ ___) |__) |  _ <|  _|
-|____/       /_/\_\____/____/|_| \_\_|
+┌─[ MODULES ]─
 
-B-XSSRF v7
+  [1] MOBILE AUDIT       → Static manifest analysis + secret extraction
+  [2] INFRASTRUCTURE     → Network recon, port scanning, vuln assessment
+  [3] ATTACK CHAIN       → Build & execute exploit chains from findings
+  [4] AUTO EXPLOIT       → Full automation: static → dynamic → exploit → report
+  [5] DECOMPILE APK      → Decompile APK with apktool for manual analysis
+  [6] GENERATE PAYLOADS  → Create custom exploitation payloads for endpoints
+  [0] EXIT               → Terminate framework
 
-🔹 Core Modules
-[1] MOBILE AUDIT → Fast static manifest parsing and initial risk checking.
-[2] INFRASTRUCTURE → Internal network mapping and service discovery.
-[3] ATTACK CHAIN → Context-aware logical sequencing of coupled vulnerabilities.
-[4] AUTO EXPLOIT → The complete end-to-end automation engine.
-[5] DECOMPILE APK → Decompile APK for manual analysis.
-[6] GENERATE PAYLOADS → Generate exploitation payloads for a URL.
-[0] EXIT → Gracefully terminate the framework environment.
+└─[ SELECT OPTION ]─
+
+┌─[b-xssrf]
+└──► Enter APK Path:
 ```
 
 ### Full Automation Chain (Option 4)
