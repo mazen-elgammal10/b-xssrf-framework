@@ -1,3 +1,0 @@
-[console_scripts]
-b-xssrf = main:main
-bxssrf = main:main
