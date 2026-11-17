@@ -48,7 +48,10 @@
 ## 📸 Screenshots
 
 ### Main Menu
-![B-XSSRF v7 Main Menu](Screenshot%202026-11-17%20154950.png)
+![B-XSSRF v7 Main Menu](screenshots/main_menu.png)
+
+### Terminal Interface
+![Terminal Interface](screenshots/main_menu.png)
 
 ---
 
